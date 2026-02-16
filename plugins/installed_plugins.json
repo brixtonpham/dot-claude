@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "plugins": {
+    "context7@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/namu10x/.claude/plugins/cache/claude-plugins-official/context7/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-02-10T15:20:04.683Z",
+        "lastUpdated": "2026-02-15T09:25:24.964Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3"
+      }
+    ],
+    "supabase@claude-plugins-official": [
+      {
+        "scope": "local",
+        "projectPath": "/Users/namu10x/workspace/skkn-genie",
+        "installPath": "/Users/namu10x/.ccp/profiles/default/plugins/cache/claude-plugins-official/supabase/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-02-10T15:23:19.131Z",
+        "lastUpdated": "2026-02-10T15:23:19.131Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "local",
+        "projectPath": "/Users/namu10x/workspace/skkn-genie",
+        "installPath": "/Users/namu10x/.ccp/profiles/default/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-02-10T15:23:19.143Z",
+        "lastUpdated": "2026-02-10T15:23:19.143Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3"
+      }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "local",
+        "projectPath": "/Users/namu10x/workspace/skkn-genie",
+        "installPath": "/Users/namu10x/.ccp/profiles/default/plugins/cache/claude-plugins-official/frontend-design/2cd88e7947b7",
+        "version": "2cd88e7947b7",
+        "installedAt": "2026-02-10T15:23:19.145Z",
+        "lastUpdated": "2026-02-10T15:23:19.145Z",
+        "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3"
+      }
+    ]
+  }
+}

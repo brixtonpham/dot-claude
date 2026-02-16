@@ -1,0 +1,8 @@
+[
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"1\",\"subject\":\"Scaffold Next.js 15 project with shadcn/ui + Tailwind in 06-dashboard\",\"description\":\"Create the 06-dashboard directory with:\\n1. Next.js 15 app (App Router) with TypeScript\\n2. Install and configure shadcn/ui + Tailwind CSS\\n3. Update pnpm-workspace.yaml to include '06-dashboard'\\n4. Add dashboard scripts to root package.json\\n5. Create basic layout.tsx with sidebar navigation\\n6. Create the complete directory structure as specified in the plan\\n7. Set up the lib/utils/paths.ts for resolving cross-phase paths\\n\\nThe workspace root is at /Users/namu10x/workspace/social-automation/\\npnpm is at /Users/namu10x/.local/share/mise/installs/pnpm/10.28.2/pnpm\\nNode v22.22.0\\n\\nCurrent pnpm-workspace.yaml:\\n```yaml\\npackages:\\n  - 'apps/*'\\n  - 'packages/*'\\n  - 'phases/*'\\n```\\n\\nThis needs '06-dashboard' added.\\n\\nRoot package.json needs scripts:\\n- \\\"dashboard\\\": \\\"pnpm --filter @social-auto/dashboard dev\\\"\\n- \\\"dashboard:build\\\": \\\"pnpm --filter @social-auto/dashboard build\\\"\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-08T19:35:46.293Z\"}",
+    "timestamp": "2026-02-08T19:35:46.293Z",
+    "read": true
+  }
+]

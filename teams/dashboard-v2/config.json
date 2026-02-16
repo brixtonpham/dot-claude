@@ -1,0 +1,19 @@
+{
+  "name": "dashboard-v2",
+  "description": "Dashboard v2 Overhaul: Industrial-Scale YouTube Production Manager - 8 tasks, 14 files",
+  "createdAt": 1770581176508,
+  "leadAgentId": "team-lead@dashboard-v2",
+  "leadSessionId": "acad2ea6-a344-4098-8573-3bb1a5c8516e",
+  "members": [
+    {
+      "agentId": "team-lead@dashboard-v2",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6-thinking",
+      "joinedAt": 1770581176508,
+      "tmuxPaneId": "",
+      "cwd": "/Users/namu10x/workspace/social-automation",
+      "subscriptions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "dashboard-build",
+  "description": "Build the Next.js 15 web dashboard for the social-automation pipeline",
+  "createdAt": 1770579292287,
+  "leadAgentId": "team-lead@dashboard-build",
+  "leadSessionId": "7f4ce294-e6f2-4791-8891-d0bb862a03ea",
+  "members": [
+    {
+      "agentId": "team-lead@dashboard-build",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6-thinking",
+      "joinedAt": 1770579292287,
+      "tmuxPaneId": "",
+      "cwd": "/Users/namu10x/workspace/social-automation",
+      "subscriptions": []
+    }
+  ]
+}

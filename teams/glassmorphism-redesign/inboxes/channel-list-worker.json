@@ -1,0 +1,14 @@
+[
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"3\",\"subject\":\"Redesign channel-list.tsx\",\"description\":\"Apply glassmorphism to channel list. Replace border-slate-700 with border-white/[0.06], bg-slate-800/50 inputs with bg-white/[0.05], hover:bg-slate-800 with hover:bg-white/[0.05], etc.\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-09T06:34:09.927Z\"}",
+    "timestamp": "2026-02-09T06:34:09.927Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1770619357412@channel-list-worker\",\"from\":\"team-lead\",\"reason\":\"All work is done. Please shut down.\",\"timestamp\":\"2026-02-09T06:42:37.412Z\"}",
+    "timestamp": "2026-02-09T06:42:37.412Z",
+    "read": true
+  }
+]

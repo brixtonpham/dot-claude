@@ -1,0 +1,127 @@
+[
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"1\",\"subject\":\"Task 1: Enhanced Data Types + Queue Functions\",\"description\":\"Modify `src/lib/data/types.ts` to add:\\n- VideoStatus type: 'draft' | 'in_review' | 'needs_changes' | 'approved' | 'scheduled' | 'uploaded' | 'rejected'\\n- QCChecklist interface (7 criteria, 1-5 scale)\\n- SEOCheck interface (7 boolean checks)\\n- QCScore interface (content_score, seo_score, composite_score, grade, checklist, seo_check, reviewer?, reviewed_at?, notes?)\\n- Update QueueVideo to use new VideoStatus and add qc_score?: QCScore field\\n\\nModify `src/lib/data/queue.ts` to add:\\n- getVideosByStatus(status: VideoStatus) - query across all channels\\n- getPendingReviewVideos() - all draft videos with content ready\\n- bulkUpdateStatus(items: {channelId, videoId}[], status, comment?) - batch update\\n- saveQCScore(channelId, videoId, qcScore) - persist QC data\\n- calculateSEOScore(video: QueueVideo): SEOCheck - auto-calculate from video data\\n\\nWorking directory: /Users/namu10x/workspace/social-automation/06-dashboard\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-08T20:07:19.297Z\"}",
+    "timestamp": "2026-02-08T20:07:19.297Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"8\",\"subject\":\"Task 8: Enhanced Video Detail + API Route Updates\",\"description\":\"Two files to modify:\\n\\n1. `src/app/queue/[channelId]/[videoId]/page.tsx`:\\n- Replace ApprovalActions with QCChecklist component in sidebar\\n- Add SEOScore card below QC checklist\\n- Add StatusTimeline component at top of sidebar\\n- Keep all existing metadata sections\\n- Import new components: QCChecklist, SEOScore, StatusTimeline\\n\\n2. `src/app/api/pipeline/run/route.ts` - Add new actions:\\n- \\\"bulkUpdateStatus\\\": accepts { items: {channelId, videoId}[], status, comment? }, calls bulkUpdateStatus from queue.ts\\n- \\\"saveQCScore\\\": accepts { channelId, videoId, qcScore }, calls saveQCScore from queue.ts\\n- \\\"getReviewStats\\\": returns { pending: number, needsChanges: number, approved: number, rejected: number }\\n\\nWorking directory: /Users/namu10x/workspace/social-automation/06-dashboard\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-08T20:09:22.405Z\"}",
+    "timestamp": "2026-02-08T20:09:22.405Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"6\",\"subject\":\"Task 6: Enhanced Sidebar with Review + Kanban nav\",\"description\":\"Modify `src/components/sidebar.tsx`:\\n\\nChanges:\\n- Add \\\"Review\\\" nav item with ClipboardCheck icon between \\\"Topics\\\" and \\\"Queue\\\" with href=\\\"/review\\\"\\n- Add \\\"Kanban\\\" nav item with Kanban icon after \\\"Review\\\" with href=\\\"/kanban\\\"  \\n- Add pending count badge on Review item (fetched from /api/pipeline/run with action: getReviewCount, or just use a client-side fetch)\\n- Badge shows red circle + count when pending reviews > 0\\n- Nav order: Dashboard → Pipeline → Topics → Review → Kanban → Queue\\n- Update version to v2.0\\n\\nThe sidebar needs a way to show the pending review count. Since it's a client component, add a useEffect that fetches pending count from API. Add a new API action \\\"getReviewCount\\\" or fetch from a new lightweight endpoint.\\n\\nActually simpler approach: make the badge count come from a separate fetch in the sidebar component itself. Add a new action \\\"getReviewStats\\\" to the API route.\\n\\nWorking directory: /Users/namu10x/workspace/social-automation/06-dashboard\\n\\nIcons from lucide-react: ClipboardCheck for Review, Columns3 for Kanban (or LayoutGrid, Trello, KanbanSquare)\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-08T20:09:40.853Z\"}",
+    "timestamp": "2026-02-08T20:09:40.853Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"7\",\"subject\":\"Task 7: Enhanced Dashboard Overview\",\"description\":\"Modify `src/app/page.tsx` to add:\\n\\n1. Urgency Banner (top of page): \\n- \\\"X videos awaiting review\\\" - red bg if > 5, yellow if > 0, hidden if 0\\n- Link to /review page\\n\\n2. Review Stats row:\\n- Approval rate percentage\\n- Count by status: draft, in_review, approved, rejected\\n\\n3. Score Distribution:\\n- Mini bar chart showing A/B/C/D/F distribution (just colored divs in a flex row)\\n- Only show if any videos have QC scores\\n\\n4. Channel Overview:\\n- Cards per channel showing: channel name, niche, total videos, videos by status (draft/approved/etc)\\n\\n5. Pipeline Flow:\\n- Horizontal mini-pipeline showing counts at each stage\\n- Arrow connecting stages: Draft → In Review → Approved → Scheduled → Uploaded\\n- Count badge on each stage\\n\\nKeep existing stats grid and pipeline phases. Add new sections after the stats grid.\\n\\nWorking directory: /Users/namu10x/workspace/social-automation/06-dashboard\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-08T20:09:57.502Z\"}",
+    "timestamp": "2026-02-08T20:09:57.502Z",
+    "read": true
+  },
+  {
+    "from": "component-builder-1",
+    "text": "Both components are complete and type-check cleanly (no new TS errors).\n\n**File 1: `/Users/namu10x/workspace/social-automation/06-dashboard/src/components/qc-checklist.tsx`**\n- \"use client\" interactive QC scoring form\n- Props: `{ channelId, videoId, existingScore?, video }`\n- 7 range-input sliders (1-5) with labels and descriptions\n- Real-time content_score (average * 20), auto-calculated SEO score (same logic as `calculateSEOScore` in queue.ts), composite = content * 0.6 + seo * 0.4\n- Grade badge with A/B/C/D/F coloring (green/blue/yellow/orange/red)\n- Score summary grid (Content / SEO / Composite)\n- Review notes textarea\n- Save button POSTs to `/api/pipeline/run` with `action: \"saveQCScore\"`\n- Uses sonner toast for success/error\n- Initializes from `existingScore` when provided\n\n**File 2: `/Users/namu10x/workspace/social-automation/06-dashboard/src/components/seo-score.tsx`**\n- \"use client\" read-only SEO readiness display\n- Props: `{ video: QueueVideo }`\n- Auto-calculates all 7 SEO checks from video data (matching queue.ts logic)\n- Each check shown as a row with CheckCircle2 (green) or XCircle (red) + label\n- Failing items show contextual suggestion text in muted color (e.g., actual title lengths)\n- Overall percentage badge at top with color coding\n- Card style matching existing components (`rounded-lg border border-border bg-card p-5`)",
+    "summary": "QC checklist and SEO score components complete",
+    "timestamp": "2026-02-08T20:10:18.385Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "component-builder-1",
+    "text": "{\"type\":\"idle_notification\",\"from\":\"component-builder-1\",\"timestamp\":\"2026-02-08T20:10:20.673Z\",\"idleReason\":\"available\"}",
+    "timestamp": "2026-02-08T20:10:20.673Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "component-builder-1",
+    "text": "{\"type\":\"idle_notification\",\"from\":\"component-builder-1\",\"timestamp\":\"2026-02-08T20:10:29.307Z\",\"idleReason\":\"available\"}",
+    "timestamp": "2026-02-08T20:10:29.307Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "component-builder-3",
+    "text": "Both components are complete.\n\n## File 1: `/Users/namu10x/workspace/social-automation/06-dashboard/src/components/batch-actions.tsx`\n\nExports:\n- **`SelectionProvider`** -- React context provider wrapping children, manages a `Set<string>` of `\"channelId:videoId\"` keys\n- **`useSelection()`** -- Hook returning `{ selected, toggle, selectAll, clearAll, isSelected, count }`\n- **`SelectionCheckbox`** -- Props `{ id: string }`, renders a checkbox bound to selection context\n- **`BatchActionBar`** -- Fixed-position floating bar at bottom center, appears when count > 0. Three action buttons (Approve/green, Reject/red, Needs Changes/yellow) + Clear. On click: `window.confirm()` then POSTs to `/api/pipeline/run` with `{ action: \"bulkUpdateStatus\", items, status }`. Uses `sonner` toast for feedback, calls `router.refresh()` on success, clears selection.\n\nSlide-up animation keyframe added to `globals.css`.\n\n## File 2: `/Users/namu10x/workspace/social-automation/06-dashboard/src/components/status-timeline.tsx`\n\nExports:\n- **`StatusTimeline`** -- Props `{ currentStatus: VideoStatus }`. Horizontal step flow: Draft -> In Review -> Approved -> Scheduled -> Uploaded. Completed steps show green CheckCircle. Current step shows primary color with ring. Future steps are gray outlines. `needs_changes` and `rejected` render as colored badge branches below the \"In Review\" step. Responsive: stacks vertically on small screens, horizontal on `sm:` breakpoint.\n\nAll code follows existing project patterns (Tailwind CSS variables, lucide-react icons, sonner toasts, `\"use client\"` directive, `/api/pipeline/run` endpoint).",
+    "summary": "batch-actions.tsx and status-timeline.tsx complete",
+    "timestamp": "2026-02-08T20:10:47.538Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "component-builder-2",
+    "text": "Task #13 complete. All three kanban board files created and type-checked successfully (no new errors):\n\n1. **`/Users/namu10x/workspace/social-automation/06-dashboard/src/components/video-card.tsx`** - \"use client\" component with:\n   - Truncated title (60 chars), channel badge with color seeded from channelId, priority with Star icon (red >= 8, yellow >= 5, gray otherwise)\n   - Status badge using full statusColors map (draft/in_review/needs_changes/approved/scheduled/uploaded/rejected)\n   - QC grade badge (A=green, B=blue, C=yellow, D=orange, F=red) when qc_score exists\n   - compact mode hides status + QC badges\n   - Wrapped in Next.js Link to `/queue/[channelId]/[videoId]`\n\n2. **`/Users/namu10x/workspace/social-automation/06-dashboard/src/components/kanban-board.tsx`** - \"use client\" component with:\n   - 7 columns in order: Draft | In Review | Needs Changes | Approved | Scheduled | Uploaded | Rejected\n   - Colored header bars matching status, count badge, WIP warning when > 10 items\n   - Channel filter dropdown at top\n   - Horizontal scrollable container, columns fixed height with internal scroll, min-width 250px\n   - Renders VideoCard components in compact mode\n\n3. **`/Users/namu10x/workspace/social-automation/06-dashboard/src/app/kanban/page.tsx`** - Server component:\n   - Fetches all videos via getAllVideosWithChannel() and channels via getChannels()\n   - Extracts unique sorted channel IDs\n   - Renders KanbanBoard with title and subtitle\n\nAll files follow existing project patterns (Tailwind CSS, lucide-react, cn utility, Next.js App Router conventions).",
+    "summary": "Kanban board 3 files created, type-checked OK",
+    "timestamp": "2026-02-08T20:10:52.841Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "component-builder-3",
+    "text": "{\"type\":\"idle_notification\",\"from\":\"component-builder-3\",\"timestamp\":\"2026-02-08T20:10:54.306Z\",\"idleReason\":\"available\"}",
+    "timestamp": "2026-02-08T20:10:54.306Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "component-builder-2",
+    "text": "{\"type\":\"idle_notification\",\"from\":\"component-builder-2\",\"timestamp\":\"2026-02-08T20:10:55.146Z\",\"idleReason\":\"available\"}",
+    "timestamp": "2026-02-08T20:10:55.146Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "component-builder-3",
+    "text": "Task #11 is complete (batch-actions.tsx and status-timeline.tsx). I received a truncated/malformed task assignment message that doesn't contain valid instructions. I'm idle and ready for my next task if there is one.",
+    "summary": "Task 11 done, ready for next assignment",
+    "timestamp": "2026-02-08T20:11:00.342Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "component-builder-3",
+    "text": "{\"type\":\"idle_notification\",\"from\":\"component-builder-3\",\"timestamp\":\"2026-02-08T20:11:02.133Z\",\"idleReason\":\"available\"}",
+    "timestamp": "2026-02-08T20:11:02.133Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "component-builder-2",
+    "text": "{\"type\":\"idle_notification\",\"from\":\"component-builder-2\",\"timestamp\":\"2026-02-08T20:11:04.700Z\",\"idleReason\":\"available\"}",
+    "timestamp": "2026-02-08T20:11:04.700Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"2\",\"subject\":\"Task 2: Review Queue Page\",\"description\":\"Create `src/app/review/page.tsx` - Central hub for PM to review all pending videos.\\n\\nFeatures:\\n- Tab navigation: Pending | Needs Changes | Approved | Rejected | All\\n- Video cards in a grid: title, channel badge, priority, QC score  \\n- Bulk selection: checkboxes, \\\"Select All\\\", count indicator\\n- Contextual Action Bar (floating): Approve Selected, Reject Selected, Mark Needs Changes\\n- Filters: by channel, niche\\n- Sort: by priority (desc), date, channel, QC score\\n- Inline preview: expand card to see key points\\n\\nUses types/functions from Task 1 (getVideosByStatus, getPendingReviewVideos).\\nUses BatchActionBar from Task 5 (SelectionProvider context).\\nUses VideoCard from Task 4.\\n\\nWorking directory: /Users/namu10x/workspace/social-automation/06-dashboard\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-08T20:11:19.822Z\"}",
+    "timestamp": "2026-02-08T20:11:19.822Z",
+    "read": true
+  },
+  {
+    "from": "component-builder-1",
+    "text": "{\"type\":\"shutdown_approved\",\"requestId\":\"shutdown-1770581602803@component-builder-1\",\"from\":\"component-builder-1\",\"timestamp\":\"2026-02-08T20:13:26.054Z\",\"paneId\":\"in-process\",\"backendType\":\"in-process\"}",
+    "timestamp": "2026-02-08T20:13:26.054Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "component-builder-3",
+    "text": "{\"type\":\"shutdown_approved\",\"requestId\":\"shutdown-1770581603465@component-builder-3\",\"from\":\"component-builder-3\",\"timestamp\":\"2026-02-08T20:13:27.836Z\",\"paneId\":\"in-process\",\"backendType\":\"in-process\"}",
+    "timestamp": "2026-02-08T20:13:27.836Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "component-builder-2",
+    "text": "{\"type\":\"shutdown_approved\",\"requestId\":\"shutdown-1770581603464@component-builder-2\",\"from\":\"component-builder-2\",\"timestamp\":\"2026-02-08T20:13:27.838Z\",\"paneId\":\"in-process\",\"backendType\":\"in-process\"}",
+    "timestamp": "2026-02-08T20:13:27.838Z",
+    "color": "green",
+    "read": true
+  }
+]

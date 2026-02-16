@@ -1,0 +1,15 @@
+[
+  {
+    "from": "component-builder-3",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"11\",\"subject\":\"component-builder-2\",\"description\":\"You are working on /Users/namu10x/workspace/social-automation/06-dashboard/.\\n\\nCreate THREE files. Us\",\"assignedBy\":\"component-builder-3\",\"timestamp\":\"2026-02-08T20:09:42.680Z\"}",
+    "timestamp": "2026-02-08T20:09:42.680Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1770581603465@component-builder-3\",\"from\":\"team-lead\",\"reason\":\"All tasks completed, build passes. Shutting down.\",\"timestamp\":\"2026-02-08T20:13:23.465Z\"}",
+    "timestamp": "2026-02-08T20:13:23.465Z",
+    "read": true
+  }
+]

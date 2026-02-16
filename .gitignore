@@ -1,0 +1,22 @@
+# Session data (regenerated per machine)
+debug/
+session-env/
+file-history/
+shell-snapshots/
+history.jsonl
+stats-cache.json
+cache/
+image-cache/
+telemetry/
+history/
+
+# Claude session files
+.claude.json
+.claude.json.backup.*
+.claude/
+
+# OS
+.DS_Store
+
+# Local overrides
+settings.local.json

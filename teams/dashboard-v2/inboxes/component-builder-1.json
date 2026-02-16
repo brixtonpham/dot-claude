@@ -1,0 +1,15 @@
+[
+  {
+    "from": "component-builder-1",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"10\",\"subject\":\"Create qc-checklist.tsx and seo-score.tsx components\",\"description\":\"Build two component files in /Users/namu10x/workspace/social-automation/06-dashboard/src/components/ following existing project patterns (Tailwind CSS, lucide-react, sonner). File 1: qc-checklist.tsx - interactive QC scoring form. File 2: seo-score.tsx - read-only SEO readiness display.\",\"assignedBy\":\"component-builder-1\",\"timestamp\":\"2026-02-08T20:09:02.127Z\"}",
+    "timestamp": "2026-02-08T20:09:02.127Z",
+    "color": "blue",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1770581602803@component-builder-1\",\"from\":\"team-lead\",\"reason\":\"All tasks completed, build passes. Shutting down.\",\"timestamp\":\"2026-02-08T20:13:22.803Z\"}",
+    "timestamp": "2026-02-08T20:13:22.803Z",
+    "read": true
+  }
+]

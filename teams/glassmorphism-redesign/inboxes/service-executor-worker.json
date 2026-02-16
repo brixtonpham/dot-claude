@@ -1,0 +1,14 @@
+[
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"5\",\"subject\":\"Redesign service-executor.tsx + cascading-service-selector.tsx\",\"description\":\"Apply glassmorphism to right panel and service selector modal. Replace all slate borders/bgs with glass equivalents per the plan.\",\"assignedBy\":\"team-lead\",\"timestamp\":\"2026-02-09T06:34:10.471Z\"}",
+    "timestamp": "2026-02-09T06:34:10.471Z",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1770619357889@service-executor-worker\",\"from\":\"team-lead\",\"reason\":\"All work is done. Please shut down.\",\"timestamp\":\"2026-02-09T06:42:37.889Z\"}",
+    "timestamp": "2026-02-09T06:42:37.889Z",
+    "read": true
+  }
+]

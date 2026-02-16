@@ -1,0 +1,19 @@
+{
+  "name": "glassmorphism-redesign",
+  "description": "Full dashboard UI redesign to glassmorphism dark mode",
+  "createdAt": 1770618652129,
+  "leadAgentId": "team-lead@glassmorphism-redesign",
+  "leadSessionId": "54bb6980-e8f1-4fb4-b8df-1c7b2bb2c53e",
+  "members": [
+    {
+      "agentId": "team-lead@glassmorphism-redesign",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6-thinking",
+      "joinedAt": 1770618652129,
+      "tmuxPaneId": "",
+      "cwd": "/Users/namu10x/workspace/youtube-dashboard",
+      "subscriptions": []
+    }
+  ]
+}

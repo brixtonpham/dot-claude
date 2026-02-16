@@ -1,0 +1,15 @@
+[
+  {
+    "from": "component-builder-2",
+    "text": "{\"type\":\"task_assignment\",\"taskId\":\"13\",\"subject\":\"Create video-card, kanban-board, and kanban page components\",\"description\":\"Build three files for the kanban board feature:\\n1. src/components/video-card.tsx - Compact video card component\\n2. src/components/kanban-board.tsx - Kanban board with status columns\\n3. src/app/kanban/page.tsx - Server component page\",\"assignedBy\":\"component-builder-2\",\"timestamp\":\"2026-02-08T20:09:23.234Z\"}",
+    "timestamp": "2026-02-08T20:09:23.234Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"requestId\":\"shutdown-1770581603464@component-builder-2\",\"from\":\"team-lead\",\"reason\":\"All tasks completed, build passes. Shutting down.\",\"timestamp\":\"2026-02-08T20:13:23.464Z\"}",
+    "timestamp": "2026-02-08T20:13:23.464Z",
+    "read": true
+  }
+]
